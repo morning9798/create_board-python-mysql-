@@ -1,0 +1,78 @@
+/* 반응형 속성은 바꿀 부분만 수정 */
+@media (max-width: 1000px){ /* 1000px 보다 작으면 */
+  .board_wrap{  /* 게시판 전체 사이즈를 줄이고, 최소 사이즈 설정 */
+    width: 100%;
+    min-width: 320px;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+
+  .board_list .num,
+  .board_list .writer,
+  .board_list .count{ /* 글번호,작성자,조회수 안보이기 */
+    display: none;
+  }
+
+  .board_list .date{  /* 크기 줄이기 */
+    width: 40%;
+  }
+
+  .board_list .title{ /* 글 내용의 제목 글자 수 제한 */
+    text-indent: 10px;
+  }
+  .board_list .top .title{  /* 제목 <- 이부분은 빼고 */
+    text-indent: 0;
+  }
+
+  .board_page a{
+    width: 26px;
+    height: 26px;
+  }
+
+  .board_page a.bt{
+    padding-top: 7px;
+  }
+  .board_page a.num{
+    padding-top: 6px;
+  }
+
+  .board_view .info dl{ /* 글 내용의 정보들 넓이 줄이고 줄 여백 없애기 */
+    width: 50%;
+    padding: 0;
+  }
+  .board_view .info dl:nth-child(-n+2){   /* 첫번째와 두번째만 밑에 여백 추가 */
+    margin-bottom: 5px;
+  }
+
+  .board_view .info dl::before{ /* 전체 화면에 있었던(번호,글쓴이 사이) 회색 줄 삭제 */
+    display: none;
+  }
+
+  .board_view .info dl dt,
+  .board_view .info dl dd{ /* 폰트 사이즈 줄이기 */
+    font-size: 1.2rem;
+  }
+
+  .board_write .title dt,
+  .board_write .info dt{  /* 제목,글쓴이,비밀번호 글씨 없애기 */
+    display: none;
+  }
+
+  .board_write .title dd,
+  .board_write .info dd{  /* 부모 요소의 각각(제목,글쓴이,비번) 넓이 100% 사용 */
+    width: 100%;
+  }
+
+  .board_write .info dl{  /* 글쓴이,비밀번호 입력 공간도 공백(2%) 빼고 늘리기 */
+    width: 49%;
+  }
+  .board_write .info dl:first-child{
+    margin-right: 2%;
+  }
+
+  .board_write .title input[type="text"],
+  .board_write .info input[type="text"],
+  .board_write .info input[type="password"]{  /* 입력(input)칸 도 늘리기 */
+    width: 100%;
+  }
+}

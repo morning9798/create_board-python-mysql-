@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-size: 10px;
+}
+
+ul, li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+/* 여기까지 페이지 스타일 초기화 */
+
+.board_wrap{  /* 게시판 전체 위치 조정 */
+  width: 1000px;
+  margin: 100px; /* auto 안됨 */
+}
+
+.board_title{ /* 게시판 목록과 제목 사이에 공백 넣기 */
+  margin-bottom: 30px;
+}
+
+.board_title strong{
+  font-size: 3rem;  /* rem : 전체 폰트 사이즈의 3배 */
+}
+
+.bt_wrap{
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0;   /* 버튼 사이에 공백 지우기(초기화) */
+}
+
+.bt_wrap a{
+  display: inline-block;
+  min-width: 80px;  /* 최소 가로 길이는 80px */
+  margin-left: 10px;  /* 버튼 사이 공백 지정 */
+  padding: 10px;    /* 상하좌우 여백은 10px */
+  border: 1px solid #000;   /* 테두리 선은 검정색 */
+  border-radius: 10px;   /* 둥근 정도는 10px */
+  font-size: 1.4rem;    
+}
+
+.bt_wrap a:first-child {
+  margin-left: 0;   /* a태그 첫번째(목록)의 왼쪽 공백 지우기 */
+}
+
+.bt_wrap a.on{  /* 목록 버튼 색깔 바꾸기 */
+  background-color: #000;
+  color: #fff;
+}
+
+.board_list{    /* 게시판 형태를 만들, 상단에 검정색 2px 짜리 줄 만들기 */
+  width: 100%;  /* 최상위 board_wrap 이 차지하는 크기의 100% */
+  border-top: 2px solid #000;   
+} 
+
+.board_list > div {   /* 게시물을 놔눠 줄 회색 선 */
+  border-bottom: 1px solid #ddd;
+  font-size: 0;   /* 위에서와 동일하게 공백 초기화 */
+}
+
+.board_list > div.top{  /* 게시글 첫번째 행(제목,번호) 과 게시물을 놔너줄 선 */
+  border-bottom: 3px solid #ddddddb6;
+}
+
+.board_list > div:last-child{ /* 게시물 마지막, 게시판 형태를 만들 선 */
+  border-bottom: 1px solid #000;
+}
+
+.board_list > div > div{
+  display: inline-block;  /* 인라인(한 줄로) 블록 설정을 안하면 밑으로 내려가기 때문에 가로로 배치 */
+  vertical-align: middle; /* 만약에 제목이 2줄이 되어버리면 다른 번호,글쓴이 등 모두 같이 2줄 처리로 내려가는데, 이 명령어로 가운데 정렬을 해줌 */
+  text-align: center;
+  padding: 15px 0;  /* 게시물 상하 간에 공백 넣기 */
+  font-size: 1.4rem;  /* 부모 (list > div) 에서 공백을 초기화 했기 때문에 폰트사이즈를 적용 해주어야 보인다 */
+}
+
+.board_list .num{
+  width: 10%;
+}
+.board_list .title{ /* 게시글 제목 부분은 좌우 넓이고, 왼쪽 정렬 */
+  width: 60%;
+  text-align: left;
+}
+
+.board_list .top .title{  /* 게시판 제목만 가운데 정렬 */
+  text-align: center;
+}
+
+.board_list .writer{
+  width: 10%;
+}
+.board_list .date{
+  width: 10%;
+}
+.board_list .count{
+  width: 10%;
+}
+
+.board_page{    /* 게시판 목록 초기화 */
+  margin-top: 30px;   /* 게시판과 공백 */
+  text-align: center;
+  font-size: 0;
+}
+
+.board_page a{    /* 게시판 목록 넘어가는 버튼 부분 만들기 */
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ddd;
+  border-left: 0;   /* 버튼 사이에 선이 두 줄이 됨으로 왼쪽을 없앰 */
+  vertical-align: middle;   /* 글자 들 크기 맞추기 */
+  line-height: 100%;  /* 기본적으로 상속받는 값 초기화 */
+  box-sizing: border-box;   /* 숫자or기호를 가운데 맞추기 위해 공백을 넣어서 버튼이 길어진걸 높이 32px 안으로 맞추기 */ 
+}
+
+.board_page a:first-child{  /* 왼쪽 선을 없애버렸기 때문에, 첫번째 왼쪽 선 만들기 */
+  border-left: 1px solid #ddd;
+}
+
+.board_page a.bt {
+  font-size: 1.2rem;
+  padding-top: 10px;  /* 숫자와 기호의 크기를 다르게 해놨으므로 공백도 다르게 */
+  letter-spacing: -1px; /* 기호(> >>)가 떨어져 있는걸 붙이기 */
+}
+
+.board_page a.num{
+  font-size: 1.4rem;
+  padding-top: 9px;
+}
+
+.board_page a.num.on{   /* 선택된 페이지에 있을 때 버튼 모양 */
+  border-color: #000;
+  background-color: #000;
+  color: #fff;    /* 테두리와 배경 색은 검정색으로, 글씨는 하얀색 */
+}
+
+
+/* 글 내용 페이지 */
+
+
+.board_view{  /* 위에와 똑같이 게시판 제목 사이에 공백 넣기 */
+  width: 100%;
+  border-top: 2px solid #000;
+}
+
+.board_view .title{   /* 글 제목과 글 정보들 사이에 회색 선넣고, 좌우 정렬 */
+  padding: 20px 15px;
+  border-bottom: 1px dashed #ddd;
+  font-size: 2rem;
+}
+
+.board_view .info{  /* 글 정보와 내용 사이에 회색 선넣고, 좌우 정렬 */
+  padding: 15px;
+  border-bottom: 1px solid #999;
+  font-size: 0;   /* 번호(한글)과 숫자 사이에 띄어쓰기 없애기 */
+}
+
+.board_view .info dl{   /* 한 줄로 정렬, 글 정보의 제목간의 띄우기 */
+  position: relative; /* 요소를 자기 자신 기준으로 배치 */
+  display: inline-block;
+  padding: 0 20px;
+}
+.board_view .info dl:first-child{   /* 첫번째는 왼쪽 공백 X */
+  padding-left: 0;
+}
+
+.board_view .info dl::before{   /* 가상 선택자 사용해서 사이사이에 | 넣기 */
+  content: "";  /* 글 정보의 제목 앞에 붙일 내용 / 이 부분이 없으면 만들어지지가 않음 */
+  position: absolute; /* 부모 요소(.info dl) 앞에 붙이기 */
+  top: 1px; 
+  left: 0;  /* 부모요소에서 정의가 없을 경우 top,left 0이기 때문에 왼쪽 구석에 겹치게 보이게 됨 */
+  display: block;   /* 자신만의 공간을 만들어주지 않으면 보이지 않음 */
+  width: 1px;
+  height: 13px;
+  background-color: #ddd;
+}
+.board_view .info dl:first-child::before{   /* 첫번째(번호) 앞에는 지우기 */
+  display: none;
+}
+
+.board_view .info dl dt,  /* 공통 되는 부분은 묶기 */
+.board_view .info dl dd{
+  display: inline-block;
+  font-size: 1.4rem;
+}
+
+.board_view .info dl dt{
+
+}
+.board_view .info dl dd{  /* 글 정보의 제목과 내용 띄우고, 색 변경 */
+  margin-left: 10px;
+  color: #777;
+}
+
+.board_view .cont{
+  padding: 15px;  /* 테두리(선)들 과의 간격 */
+  border-bottom: 1px solid #000;  
+  line-height: 160%;    /* 내용들 간의 간격 */
+  font-size: 1.4rem;
+}
+
+
+/* 글 쓰기 페이지 */
+
+.board_write{
+  border-top: 2px solid #000;
+}
+
+.board_write .title,
+.board_write .info{
+  padding: 15px;
+}
+
+.board_write .info{
+  border-top: 1px dashed #ddd;
+  border-bottom: 1px solid #000;
+  font-size: 0;
+}
+
+.board_write .cont{   /* 여기까지 틀 만드는 부분 */
+  border-bottom: 1px solid #000;
+}
+
+.board_write .title dl{ /* html의 공백 삭제 */
+  font-size: 0;
+}
+
+.board_write .info dl{  /* .info 에서 띄어쓰기 처리를 해주면 상관 없지만 
+                            dl과 /dl의 띄어쓰기가 있으면 가로로 안됨 */
+  display: inline-block;
+  width: 50%;
+  vertical-align: middle;
+}
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .info dt,
+.board_write .info dd{  /* 제목,글쓴이,비밀번호 부분 */
+  display: inline-block;  /* 같은 것끼리는 가로로 배치 */
+  vertical-align: middle; /* 부모 요소 중앙에 배치 */
+  font-size: 1.4rem;
+}
+
+.board_write .title dt,
+.board_write .info dt{  /* 제목과 제목 입력칸 간의 공백 넣기 */
+  width: 100px;
+}
+
+.board_write .title dd{ /* 제목 입력을 할 공간 할당 */
+  width: calc(100% - 100px);  /* 가로 길이가 변한다면 거기의 맞게 할당되도록 calc 함수사용 */
+}
+
+.board_write .title input[type="text"],
+.board_write .info input[type="text"],
+.board_write .info input[type="password"]{
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.board_write .title input[type="text"]{ /* input태그의 text 타입 크기 지정 */
+  width: 80%;
+}
+
+.board_write .cont textarea{
+  display: block; /* 블록처리를 안하면 밑에 선이 늘어남 */
+  width: 100%;    /* 전체(게시글)의 넓이를 100%만큼 사용 */
+  height: 300px;  /* 높이 지정 */
+  padding: 15px;  /* 테두리 선에서 떨어지게 공백을 조금 넣기 */
+  box-sizing: border-box;   /* 테두리 선도 내가 지정한 넓이,높이 값에 포함 */
+  border: 0;      /* 좌,우 선은 없애기 */
+  resize: vertical; /* 내용 입력 칸의 위,아래로는 크기 지정 가능 */
+}
