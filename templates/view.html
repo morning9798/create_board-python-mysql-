@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link rel="stylesheet" href="/static/css/css.css">
+</head>
+<body> 
+  <div class = "board_wrap">
+    <div class = "board_title">
+      <strong>게시판</strong>
+    </div>
+    <div class = "board_view_wrap">
+      <div class = "board_view">
+        <div class="title">
+          {{ data_list[0][1] }}
+        </div>
+        <div class="info">
+          <dl>
+            <dt>번호</dt>
+            <dd>{{ data_list[0][0] }}</dd>
+          </dl>
+          <dl>
+            <dt>글쓴이</dt>
+            <dd>{{ data_list[0][2] }}</dd>
+          </dl>
+          <dl>
+            <dt>작성일</dt>
+            <dd>{{ data_list[0][3] }}</dd>
+          </dl>
+          <dl>
+            <dt>조회</dt>
+            <dd>{{ data_list[0][4] }}</dd>
+          </dl>
+        </div>
+        <div class="cont">
+          {{ data_list[0][5] }}
+        </div>
+      </div>
+      <div class = "bt_wrap">
+        <a href="/" class="on">목록</a>
+        <!-- a태그 활용해서 넘기기 -->
+        <a href="/edit/{{data_list[0][0]}}">수정</a>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
